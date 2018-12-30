@@ -15,20 +15,20 @@
   const calculateUpdatedRating = (
     playerRating,
     opponentRating,
-    isWin = true
+    winLoseOrDrawScore
   ) => {
     const k = getK();
-    const score = isWin ? 1 : 0;
     return (
       playerRating +
-      k * (score - calculateExpectedScore(playerRating, opponentRating))
+      k *
+        (winLoseOrDrawScore -
+          calculateExpectedScore(playerRating, opponentRating))
     );
   };
 
   const renderRating = (oldRating, newRating) => {
     const diff = newRating - oldRating;
-    const foo = diff > 0 ? '+' : '';
-    return `${newRating} (${foo}${diff})`;
+    return `${newRating} (${diff > 0 ? '+' : ''}${diff})`;
   };
 
   document.getElementsByTagName('form')[0].addEventListener('submit', event => {
@@ -41,15 +41,16 @@
       event.target.querySelector('input[name="ratingLoser"]').value,
       10
     );
+    const isDraw = event.target.querySelector('input[name="isDraw"]').checked;
     const winnersUpdatedRating = calculateUpdatedRating(
       winnersRating,
       losersRating,
-      true
+      isDraw ? 0.5 : 1
     );
     const losersUpdatedRating = calculateUpdatedRating(
       losersRating,
       winnersRating,
-      false
+      isDraw ? 0.5 : 0
     );
     document.getElementById('result').innerHTML = `
         <h2>Result</h2>
