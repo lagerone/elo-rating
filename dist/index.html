@@ -36,16 +36,19 @@
       </p>
       <form>
         <div class="form-control">
-          <label for="k">K:</label>
+          <label>K-factor:</label>
           <input type="number" name="k" value="32" min="1" required />
         </div>
         <div class="form-control">
-          <label for="ratingA"> Winners rating:</label>
+          <label>Winners rating:</label>
           <input type="number" min="1" name="ratingWinner" required />
         </div>
         <div class="form-control">
-          <label for="ratingB"> Losers rating:</label>
+          <label>Losers rating:</label>
           <input type="number" min="1" name="ratingLoser" required />
+        </div>
+        <div class="form-control">
+          <label><input type="checkbox" name="isDraw" /> Is draw</label>
         </div>
         <button type="submit">Calculate updated ratings</button>
       </form>
