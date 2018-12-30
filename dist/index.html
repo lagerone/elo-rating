@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Elo rating calculator</title>
+    <style>
+      label {
+        display: block;
+      }
+      .form-control {
+        margin-bottom: 1rem;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+      input {
+        padding: 0.3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Elo rating calculator</h1>
+      <p>
+        A calculator based on the
+        <a href="https://en.wikipedia.org/wiki/Elo_rating_system"
+          >Elo rating system</a
+        >.
+      </p>
+      <form>
+        <div class="form-control">
+          <label for="k">K:</label>
+          <input type="number" name="k" value="32" min="1" required />
+        </div>
+        <div class="form-control">
+          <label for="ratingA"> Winners rating:</label>
+          <input type="number" min="1" name="ratingWinner" required />
+        </div>
+        <div class="form-control">
+          <label for="ratingB"> Losers rating:</label>
+          <input type="number" min="1" name="ratingLoser" required />
+        </div>
+        <button type="submit">Calculate updated ratings</button>
+      </form>
+      <div id="result"></div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
